@@ -1,0 +1,75 @@
+OOP
+Think of Class as a Blueprint - it has features and functionalities
+From that blueprint you can create many different instances of that Class
+Class Vehicle {
+    constructor(manufacturer, model, color){
+        this.miles = 0
+        this.manufacturer = manufacturer
+        this.model = model
+        this.color = color
+    }
+
+    drive(){
+        this.miles += 10
+    }
+}
+
+classes are capitalized and singular
+
+class Athlete{
+    constructor(name, health, speed, strength){
+        this.name = name;
+        this.health = health;
+        this.speed = speed;
+        this.strength = strength;
+    }
+    
+    after constructor, functionalities an athlete can perform are defined
+
+    sayName(){
+        console.log("My name is" + this.name)
+    }
+    //in python we use "self"
+
+    playGame(sportName, energySpent){
+        if energySpent <= 0 {
+            console.log('we have to collect some samples for ${this.name}')
+            return;
+        }
+        console.log(this.name + " is playing " + sportName)
+        this.health -= energySpent
+    }
+
+}
+
+Creating instances of the athlete class. Athlete object:
+let a1 = new (keyword!!) Athlete("Jordan", 100, 80, 75)
+let a2 = new  Athlete("Serena", 100, 90, 60)
+
+a1.sayName()
+a2.sayName()
+a2.playGame("Tennis", 30)
+a1.playGame("Basketball", 20)
+
+console.log(a1.health)
+console.log(a2.health)
+
+Inheritance means we can have a class that is generic that other classes can inherit From
+
+class Swimmer extends (how you tell it to inherit) Athlete {
+    constructor(name, health, speed, strength){
+        super(name, health, speed, strength) --calling the constructor of the parent class --need to pass in what the parent requires.
+        //Things a swimmer has
+        this.lungCapacity = 100;
+    }
+
+    swim(energySpent){
+        console.log("Swimming in the ocean");
+        this.energy -= energySpent;
+    }
+}
+
+Instances:
+let swimmer1 = new Swimmer("You", 100, 100, 70)
+
+swimmer1.swim(20)

@@ -1,0 +1,97 @@
+React is a front end framework which implements some type of AJAX (allows the page to update itself based on new data coming in without you having to refresh the page)
+Yikes there is a lot to learn and I don't know if I can type it out...
+
+1. import react in --start creating folders for each assignment
+index.html-- paste code from learning platform which imports react? yess importing React library under script tags
+Now we can put some javascript on the page! Woot
+between script tags, 
+const App = React.createElement("h1", {}, "Our first React page has rendered");
+ReactDOM.render(App, document.getElementById("id")); -->telling it where to put this element, location is the id
+
+-->h1 element was created by React
+-->DOM is html doc ReactDOM allows us to modify all the HTML. sweet
+
+---only for this one assignment, I think I get it ;)
+
+JSX looks just like HTML with slight differences
+"javascript that's disguised as HTML" Transpiler technology called Babel 
+JSX -> Babel -> javascript
+ instead of what we did above, we use JSX, I guess. 
+
+ starter kit = create react app --uses a web pack which has Babel (it's something imported using npx)
+npx create-react-app in the folder in the terminal
+rules: all lowercase, no underscores -dashes only, ex.)first-jsx-app
+
+app.js folder is our main javascript folder --in src folder
+npm start in the terminal is the keyword to start the app
+
+class components, just for today -after today, functional components rules
+src/components/New-file.jsx --Capital first letter is rule for this file
+
+import React, { Component } from 'react'; doing this so we can create React components
+
+class should be the same name as file name
+
+class File-name extends Component {
+    render() {
+        return all the jsx that you write for the webpage
+        div with information
+    }
+}
+
+export default File-name; export the class so that it is importable from other files
+
+in App.jsx folder
+import File-name (the class we created) from ./components/File-name
+
+put in tags <File-name> </File-name> in the App function created in App folder
+
+let's talk about Props! Information you pass down to a component is called Props
+inside of the angle brackets --prop is short for property
+<File-name price = {15.99}> </File-name>
+
+to accept props == {this.props.price} in class write up under File-name 
+
+it's repetitive to write this.props everytime
+
+let {dish, price} = this.props
+
+
+Children -- 4 instances of component (File-name)
+inbetween our component tags we can add a p tag for a description
+
+children property is when this.props.children  represents any content between component tags
+under class {this.props.children} --makes it dynamic in the Apps document
+
+Events and State - to bring a level of interaction to the users
+listen for an event like onclick 
+
+add a button to the class return -every item has a button now to add functionality to it
+button onClick = { ()=> console.log("okay, we made some progresss!") }
+button onClick = { ()=> alert("you clicked it!") }
+button onClick = { ()=> {console.log("you rock") alert("woops!")}}
+
+define these things in some other function inside render() above the returnlet clickHandler = ()=>{
+
+}
+
+button onClick = {clickHandler} <- no parentheses here, very important!! 
+
+Now for state learning - for real
+state -something that can change, like a mood
+in our application let's identify something that we want to change -like a like 
+a variable that can change throughout the component unique to the component instance
+
+"put it in a state variable" if you want differences to show up between instances of a component
+add a constructor before render () in your class code
+
+constructor (props)--> has to inherit props {
+    super(props);
+    this.state = {
+        likes: this.props.likes
+    };
+}
+{this.state.likes}
+
+under clickHandler, add some logic using setState (woo!)
+this.setState({likes: this.state.likes + 1})
