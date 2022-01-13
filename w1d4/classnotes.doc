@@ -68,3 +68,12 @@ let [breed, setBreed] = useState(null)
 Breed: {breed}
 
 put value in value for dropdown menu
+
+Conditional rendering
+render something on the PetForm
+now we gotta talk about ternary operator {
+    name.length < 2?
+    return p name must be greater than 2 p:""
+}
+ternary operator
+
