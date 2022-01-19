@@ -26,7 +26,7 @@ const Pokemon = () => {
             listOfPokemon.map((pokemonObj, i) => {
                 return (
                     <div>
-                        <p>{pokemonObj.results[0]}</p>
+                        <p>{pokemonObj.results[0]["name"]}</p>
                     </div>
                 )
             })
