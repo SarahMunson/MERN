@@ -5,13 +5,13 @@ const Pokemon = () => {
     let [listOfPokemon, setListOfPokemon] = useState([])
 
     const buttonSelect = () => {
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=807&offset=200tps:")
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=807")
         .then(response => {
             return response.json()
         })
         .then(response => {
             console.log(response)
-            setListOfPokemon(response)
+            setListOfPokemon(response.results)
         })
         .catch(err => {
             console.log(err)
@@ -26,7 +26,7 @@ const Pokemon = () => {
             listOfPokemon.map((pokemonObj, i) => {
                 return (
                     <div>
-                        <p>{pokemonObj.results[0]["name"]}</p>
+                        <p>{pokemonObj.name}</p>
                     </div>
                 )
             })
