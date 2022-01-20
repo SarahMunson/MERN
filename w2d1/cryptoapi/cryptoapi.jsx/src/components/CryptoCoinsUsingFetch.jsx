@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const CryptoCoinsUsingFetch = () => {
 
@@ -34,6 +34,8 @@ const CryptoCoinsUsingFetch = () => {
         <>
         <h3>Hello from crypto component</h3>
         <p><button onClick = {getCoins} >Click to get crypto coins showing</button></p>
+        <p>Search for cryptocurrency: <input type="search" name="search" id="" /></p>
+
         {
             listOfCoins.map((coinObj, i) => {
                 return (
