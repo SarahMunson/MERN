@@ -3,39 +3,23 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link
 }
-from 'react-router-dom';
-import { useParams } from 'react-router';
-import People from './Components/People';
+  from 'react-router-dom';
+import SearchForm from './Components/SearchForm';
+import Detail from './Components/Detail';
 
 function App() {
   return (
     <BrowserRouter>
-    <div className='App'>
-
-    <h1>Hello</h1>
-    <label>Search for: </label>
-    <select>
-      <option selected hidden disabled>
-      People
-      </option>
-    </select>
-    <label>ID: </label>
-    <input></input>
-    <button>Search</button>
-    <hr/>
-    <label>Search for: </label>
-    <select>
-      <option selected hidden disabled>
-      Planets
-      </option>
-    </select>
-    <label>ID: </label>
-    <input></input>
-    <button>Search</button>
-    </div>
-    
+      <div className='App container'>
+        <h1>Luke API Walker</h1>
+        <SearchForm></SearchForm>
+      </div>
+      <Switch>
+        <Route exact path = "/:category/:id">
+          <Detail></Detail>
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }
