@@ -1,0 +1,11 @@
+Won't be using mongodb commands..
+Cloud version of mongodb
+a table in sql is a collection in mongodb --returns in an array
+a row in sql is a document --returns an object 
+auto generates an ID field _id:
+
+mongoose is going to be the ORM --object relational mapper 
+a tool that allows you to communicate with the database, without having to type in the raw database commandsallows us to use simplified commands
+We're going to use Mongoose to talk to mongodb 
+
+Our goal is to create an api that sticks!

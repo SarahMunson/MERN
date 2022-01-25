@@ -31,7 +31,6 @@ class Company {
 //route
 app.get('/api/users/new', (req,res) => {
     let newUser = new User();
-    let newCompany = new Company();
     res.json({result: newUser})
 })
 
