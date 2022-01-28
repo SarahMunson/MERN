@@ -1,5 +1,7 @@
 import './App.css';
 import ProductForm from './components/ProductForm';
+import AllProducts from './components/AllProducts';
+import OneProduct from './components/OneProduct';
 import {
   BrowserRouter,
   Route,
@@ -11,10 +13,15 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App container'>
-      <Route exact path= "/">
-        <ProductForm></ProductForm>
-      </Route>
-      
+        <Switch>
+          <Route exact path='/'>
+            <ProductForm></ProductForm>
+            <AllProducts></AllProducts>
+          </Route>
+          <Route exact path='/productdetails/:id'>
+            <OneProduct></OneProduct>
+          </Route> 
+        </Switch>
       </div>
     </BrowserRouter>
   );

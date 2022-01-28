@@ -26,6 +26,7 @@ const NewNinjaForm = (props) => {
                 }
                 else {
                     props.setNewNinjaAdded(!props.newNinjaAdded)
+                    history.push('/')
                 }
             })
             .catch(err => console.log("error in submitting post request", err))
