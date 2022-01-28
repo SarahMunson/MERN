@@ -2,6 +2,7 @@ import './App.css';
 import ProductForm from './components/ProductForm';
 import AllProducts from './components/AllProducts';
 import OneProduct from './components/OneProduct';
+import EditProduct from './components/EditProduct';
 import {
   BrowserRouter,
   Route,
@@ -21,6 +22,9 @@ function App() {
           <Route exact path='/productdetails/:id'>
             <OneProduct></OneProduct>
           </Route> 
+          <Route exact path={'/product/edit/:id'}>
+            <EditProduct></EditProduct>
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
