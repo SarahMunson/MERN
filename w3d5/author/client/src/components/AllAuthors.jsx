@@ -26,20 +26,24 @@ const AllAuthors = () => {
             .catch(err => console.log("error when deleting author", err))
     }
 
+    let sortStuff = [].concat(allAuthors)
+    .sort((a, b) => a.itemM > b.itemM ? 1 : -1)
+    //work on sort more another day
 
     return (
         <div className='container'>
-            <p style= {{color:'purple'}} className='fw-bold'>We have quotes by:</p>
+            <p style={{ color: 'purple' }} className='fw-bold'>We have quotes by:</p>
             <table className='table table-primary table-striped container'>
                 <thead>
-                <tr>
-                    <th scope='col'>Author</th>
-                    <th scope='col'>Actions available</th>
-                </tr>
+                    <tr>
+                        <th scope='col'>Author</th>
+                        <th scope='col'>Actions available</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    {allAuthors.map((authorObj, i) => {
-                        return (
+
+                    {sortStuff.map((authorObj, i) => {
+                            return (
                                 <tr key={i}>
                                     <td>{authorObj.authorName}</td>
                                     <td>
@@ -47,8 +51,8 @@ const AllAuthors = () => {
                                         <button className='btn' onClick={() => deleteAuthor(authorObj._id)}>Delete</button>
                                     </td>
                                 </tr>
-                        )
-                    })}
+                            )
+                        })}
                 </tbody>
             </table>
         </div>
