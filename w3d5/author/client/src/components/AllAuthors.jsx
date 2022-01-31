@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import { set } from 'mongoose';
 
 const AllAuthors = () => {
     let [allAuthors, setAllAuthors] = useState([])
@@ -26,10 +25,6 @@ const AllAuthors = () => {
             .catch(err => console.log("error when deleting author", err))
     }
 
-    let sortStuff = [].concat(allAuthors)
-    .sort((a, b) => a.itemM > b.itemM ? 1 : -1)
-    //work on sort more another day
-
     return (
         <div className='container'>
             <p style={{ color: 'purple' }} className='fw-bold'>We have quotes by:</p>
@@ -41,18 +36,18 @@ const AllAuthors = () => {
                     </tr>
                 </thead>
                 <tbody>
-
-                    {sortStuff.map((authorObj, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{authorObj.authorName}</td>
-                                    <td>
-                                        <Link to={`/edit/${authorObj._id}`} className='btn'>Edit</Link>
-                                        <button className='btn' onClick={() => deleteAuthor(authorObj._id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
+                    {allAuthors.map((authorObj, i) => {
+                        
+                        return (
+                            <tr key={i}>
+                                <td>{authorObj.authorName}</td>
+                                <td>
+                                    <Link to={`/edit/${authorObj._id}`} className='btn'>Edit</Link>
+                                    <button className='btn' onClick={() => deleteAuthor(authorObj._id)}>Delete</button>
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

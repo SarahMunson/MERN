@@ -3,9 +3,11 @@ const cors = require('cors'); //cross origin resource sharing. Enables communica
 const app = express(); //an express instance put into a variable that we can pass along and perform important functions with express built-ins at our fingertips.
 const port = 8000; //such an easy concept, but a deeper understanding would yield a deeper understanding of servers that could benefit me.
 
-app.use(express.json()); //calling our builtin express ability to translate json from the post response. Is it into json or from json into english? I'm not sure. I think it takes our post request and feeds it to the database in a language the database can understand. Do most developers understand exactly what this and all other parts of the build do? 
+
+
+app.use(express.json()); //calling our builtin middleware for express. It has the ability to translate json from the post response. It takes our post request and feeds it to the database in a language the database can understand, json.
 app.use(express.urlencoded({extended:true})); //nifty code we copy and pasted just described as express allowing us to read information
-app.use(cors()); //features of cors library at our fingertip --telling the app instance of express to use this library
+app.use(cors()); //"cors is a node.js package for providing a connect/express middleware that can be used to enable cors with various options" npmjs.com/package/cors I think connect / express connect would be our link to the database Mongodb as it's on a different route than our front end server. Express just provides us with links to communication for our api. 
 
 
 require('./server/routes/authors.routes')(app); //passing the app variable to routes and routes to the server

@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
+    "mongoose-unique-validator": "^3.0.0",
     "react-router-dom": "^5.3.0"
   },
   "name": "author",

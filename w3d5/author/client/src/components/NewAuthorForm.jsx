@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom'
 
 const NewAuthor = () => {
     let [authorName, setAuthorName] = useState({});
+    let [formErrors, setFormErrors] = useState({})
 
     const history = useHistory()
 
@@ -13,7 +14,12 @@ const NewAuthor = () => {
         axios.post('http://localhost:8000/api/createnew', formInfoObj)
             .then(res => {
                 console.log("response after creating an author", res)
-                history.push('/')
+                if(res.data.error){
+                    setFormErrors(res.data.error.errors)
+                }
+                else{
+                    history.push('/')
+                }
             })
             .catch(err => console.log("error in creating author", err))
     }
@@ -25,6 +31,7 @@ const NewAuthor = () => {
                 <div className='form-group container'>
                 <label style= {{color:'purple'}} className='fw-bold'>Author Name:</label>
                 <input type="text" className='form-control' onChange={(e) => setAuthorName(e.target.value)} />
+                <p className='text-danger'>{formErrors.authorName?.message}</p>
                 <Link to='/' className='btn btn-info mt-3'>Cancel</Link>
                 <input type="submit" value="Submit" className="btn btn-info mt-3 mx-3" />
                 </div>

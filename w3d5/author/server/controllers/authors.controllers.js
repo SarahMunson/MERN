@@ -1,13 +1,8 @@
 const Authors = require('../models/author.model');
 
-
-module.exports.hello = (req,res) => {
-    console.log("please god help us");
-    res.json({message: "wazza"})
-}
 module.exports.findAllAuthors = (req, res) => {
     console.log("working on an array of authors!")
-    Authors.find() //I know this mongoose function returns an array 
+    Authors.find().sort({authorName: 1}) //I know this mongoose function returns an array 
     .then( allAuthors => res.json({results: allAuthors})) //this allAuthors to arrow function takes the find information (an array) and puts it in this function under an object with the key results... response.json method comes from installing init -y, I think. That response is displayed in the web apps console. 
     .catch(err => res.json({ message: 'Something went wrong when finding all', error: err })); //.catch is related to mongoose, I believe..same as .then and .find... these are filled in with variables that take information from the database, either the list of authors or an error message and the response is translated by json (with permission given by express to do so in our server) and put into an object with a message key...
 }
@@ -21,7 +16,7 @@ module.exports.findOneSingleAuthor = (req, res) => {
 }
 
 module.exports.createNewAuthor = (req, res) => {
-    Authors.create(req.body) //req.body represents the form info
+    Authors.create(req.body) //req.body represents the form info and is auto parsed by node module body-parser
         .then(newAuthor => {
             res.json({ results: newAuthor })
         })
@@ -29,9 +24,9 @@ module.exports.createNewAuthor = (req, res) => {
 }
 
 module.exports.updateAuthor = (req, res) => {
-    Authors.findOneAndUpdate( //find one and update duuude
+    Authors.findOneAndUpdate( 
         { _id: req.params.id }, //params to update information about the author with this id
-        req.body, //update with the object sent from the form req.body is like a variable in itself but perhaps uses built in react function .body? request being what we send back for our server to handle and update in the database, and response being what we get back
+        req.body, //update with the object sent from the form req.body. req.body is a built in property of express... it uses middleware software express.urlencoded() and express.json() to return js objects
         { new: true, runValidators: true } //return back the newly updated Authors info true & true becurzzz else no return means no update.. so listen to this command, mongodb --mongoose sends it to help us
     )
         .then(updatedAuthor => res.json({ result: updatedAuthor })) //here we just want to return an object to hold the result so we can read it on our console that we have an updated author! Yay
